@@ -1,7 +1,11 @@
-import requests
 import datetime
+import argparse
+import os
 
-import for_image
+import requests
+from dotenv import load_dotenv
+
+import image_config
 
 
 def download_epic_photo(nasa_token):
@@ -21,5 +25,14 @@ def download_epic_photo(nasa_token):
         response.raise_for_status()
         image_url = response.url
         filename = f'epic_{index}.png'
-        download_path = f"{for_image.DIRECTORY}/{filename}"
-        for_image.download_image(image_url, download_path)
+        download_path = f"{image_config.DIRECTORY}/{filename}"
+        image_config.download_image(image_url, download_path)
+
+
+if __name__ == '__main__':
+    load_dotenv()
+    nasa_token = os.environ['API_NASA_TOKEN']
+    image_config.create_directory()
+    parser = argparse.ArgumentParser(description='Программа скачивает фото Земли из космоса')
+    args = parser.parse_args()
+    download_epic_photo(nasa_token) 

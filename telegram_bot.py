@@ -6,7 +6,7 @@ import random
 from dotenv import load_dotenv
 import telegram
 
-from for_image import DIRECTORY
+from image_config import DIRECTORY
 
 
 def get_wait_time():

@@ -2,19 +2,20 @@ import argparse
 
 import requests
 
-import image_config
+import for_image
 
 
 def get_id():
     parser = argparse.ArgumentParser(
         description='Программа скачивает картинки запуска ракет space X'
     )
-    parser.add_argument('-id', '--id', help='id запуска', default="latest")
+    parser.add_argument('--id', help='id запуска', default="latest")
     args = parser.parse_args()
     return args.id
 
 
-def fetch_spacex_launch():
+def fetch_spacex_last_launch():
+    # id = "5eb87d47ffd86e000604b38a"
     id = get_id()
     image_url = f"https://api.spacexdata.com/v5/launches/{id}"
     response = requests.get(image_url)
@@ -22,12 +23,4 @@ def fetch_spacex_launch():
     images_links = response.json()['links']['flickr']['original']
     for num, link in enumerate(images_links):
         filename = f'spacex_{num}.jpeg'
-        image_config.download_image(link, f"{image_config.DIRECTORY}/{filename}")
-
-
-if __name__ == '__main__':
-    image_config.create_directory()
-    parser = argparse.ArgumentParser(description='Программа скачивает фотографии с запуска ракет от компании SpaceX')
-    parser.add_argument('-id', '--id', help='ID запуска')
-    args = parser.parse_args()
-    fetch_spacex_launch(args.id)
+        for_image.download_image(link, f"{for_image.DIRECTORY}/{filename}")
