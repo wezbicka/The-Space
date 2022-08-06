@@ -2,7 +2,7 @@ import argparse
 
 import requests
 
-import for_image
+import image_config
 
 
 def get_id():
@@ -23,4 +23,4 @@ def fetch_spacex_last_launch():
     images_links = response.json()['links']['flickr']['original']
     for num, link in enumerate(images_links):
         filename = f'spacex_{num}.jpeg'
-        for_image.download_image(link, f"{for_image.DIRECTORY}/{filename}")
+        image_config.py.download_image(link, f"{image_config.py.DIRECTORY}/{filename}")
