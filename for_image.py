@@ -6,14 +6,13 @@ import requests
 
 DIRECTORY = "images"
 
-
 def get_image_extension(image_url):
     image_path = urlsplit(image_url).path
     extension = os.path.splitext(image_path)[1]
     return extension
 
 
-def create_directory():
+def create_directory(DIRECTORY):
     if not os.path.exists(DIRECTORY):
         os.makedirs(DIRECTORY)
 
