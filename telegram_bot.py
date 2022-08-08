@@ -41,6 +41,6 @@ if __name__ == "__main__":
     load_dotenv()
     tg_token = os.environ['TG_TOKEN']
     bot = telegram.Bot(token=tg_token)
-    chat_id = "@SpaceWezhbicka"
+    chat_id = os.getenv("CHAT_ID")
     wait_time = get_wait_time()
     send_photos(wait_time)
