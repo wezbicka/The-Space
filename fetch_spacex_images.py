@@ -9,14 +9,14 @@ def get_id():
     parser = argparse.ArgumentParser(
         description='Программа скачивает картинки запуска ракет space X'
     )
-    parser.add_argument('--id', help='id запуска', default="latest")
+    parser.add_argument('-id', '--launch_id', help='id запуска', default="latest")
     args = parser.parse_args()
-    return args.id
+    return args.launch_id
 
 
 def fetch_spacex_launch():
-    id = get_id()
-    image_url = f"https://api.spacexdata.com/v5/launches/{id}"
+    launch_id = get_id()
+    image_url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
     response = requests.get(image_url)
     response.raise_for_status()
     images_links = response.json()['links']['flickr']['original']
@@ -27,7 +27,4 @@ def fetch_spacex_launch():
 
 if __name__ == '__main__':
     image_config.create_directory()
-    parser = argparse.ArgumentParser(description='Программа скачивает фотографии с запуска ракет от компании SpaceX')
-    parser.add_argument('-id', '--id', help='ID запуска')
-    args = parser.parse_args()
-    fetch_spacex_launch(args.id)
+    fetch_spacex_launch()
