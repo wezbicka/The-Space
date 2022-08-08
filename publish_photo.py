@@ -16,14 +16,15 @@ bot = telegram.Bot(token=TG_TOKEN)
 def send_photo(file_name):
     if file_name == '':
         image = random.choice(image_config.DIRECTORY)
-        bot.send_document(
-            chat_id=CHAT_ID,
-            document=open(f'{image_config.DIRECTORY}/{image}', 'rb')
-        )
+        with open(os.path.join(image_config.DIRECTORY, image), 'rb') as file:
+            bot.send_document(
+                chat_id=CHAT_ID,
+                document=file
+            )
     else:
         bot.send_document(
             chat_id=CHAT_ID,
-            document=open(f'{image_config.DIRECTORY}/{file_name}', 'rb')
+            document=open(os.path.join(image_config.DIRECTORY, file_name), 'rb')
         )
 
 
