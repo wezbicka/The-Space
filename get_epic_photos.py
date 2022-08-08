@@ -25,7 +25,10 @@ def download_epic_photo(nasa_token):
         response.raise_for_status()
         image_url = response.url
         filename = f'epic_{index}.png'
-        download_path = f"{image_config.DIRECTORY}/{filename}"
+        download_path = os.path.join(
+            image_config.DIRECTORY,
+            filename
+        )
         image_config.download_image(image_url, download_path)
 
 
