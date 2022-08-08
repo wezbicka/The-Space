@@ -22,7 +22,7 @@ def fetch_spacex_launch():
     images_links = response.json()['links']['flickr']['original']
     for num, link in enumerate(images_links):
         filename = f'spacex_{num}.jpeg'
-        image_config.py.download_image(link, f"{image_config.py.DIRECTORY}/{filename}")
+        image_config.download_image(link, f"{image_config.DIRECTORY}/{filename}")
 
 
 if __name__ == '__main__':
