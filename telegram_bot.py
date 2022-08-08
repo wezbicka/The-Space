@@ -18,7 +18,7 @@ def get_wait_time():
         '--wait_time',
         help='время задержки',
         type=int,
-        default=os.environ['WAIT_TIME']
+        default=os.getenv('WAIT_TIME', 14400)
     )
     args = parser.parse_args()
     return args.wait_time
@@ -29,7 +29,8 @@ def send_photos(wait_time):
     while True:
         try:
             for image in images:
-                bot.send_document(chat_id=chat_id, document=open(f'images/{image}', 'rb'))
+                with open(os.path.join('images', image), 'rb') as file:
+                    bot.send_document(chat_id=chat_id, document=file)
                 sleep(wait_time)
             random.shuffle(images)
         except telegram.error.NetworkError:
