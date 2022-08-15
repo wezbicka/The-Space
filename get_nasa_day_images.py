@@ -29,5 +29,6 @@ if __name__ == '__main__':
     image_config.create_directory()
     nasa_token = os.environ['API_NASA_TOKEN']
     parser = argparse.ArgumentParser(description='Программа скачивает популярные фотографии из космоса')
+    parser.add_argument('-c', '--count', help='количество', default=10, type=int)
     args = parser.parse_args()
     download_days_pictures(nasa_token)
