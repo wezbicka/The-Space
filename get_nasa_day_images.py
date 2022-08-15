@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 import image_config
 
 
-def download_days_pictures(nasa_token):
+def download_days_pictures(nasa_token, count):
     url = "https://api.nasa.gov/planetary/apod"
     params = {
-        "count": 10,
+        "count": count,
         "api_key": nasa_token
     }
     response = requests.get(url, params=params)
@@ -31,4 +31,5 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Программа скачивает популярные фотографии из космоса')
     parser.add_argument('-c', '--count', help='количество', default=10, type=int)
     args = parser.parse_args()
-    download_days_pictures(nasa_token)
+    count = args.count
+    download_days_pictures(nasa_token, count)
