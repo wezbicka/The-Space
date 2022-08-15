@@ -152,3 +152,4 @@ cython_debug/
 .idea/
 .images/
 images/
+main.py
