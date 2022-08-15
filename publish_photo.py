@@ -9,7 +9,7 @@ import image_config
 
 
 TG_TOKEN = os.environ['TG_TOKEN']
-CHAT_ID = os.getenv("CHAT_ID")
+CHAT_ID = os.getenv("TG_CHAT_ID")
 bot = telegram.Bot(token=TG_TOKEN)
 
 
