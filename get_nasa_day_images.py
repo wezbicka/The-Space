@@ -20,7 +20,7 @@ def download_days_pictures(nasa_token):
         image_url = day_image["url"]
         ext = image_config.get_image_extension(image_url)
         filename = f'nasa_apod_{index}{ext}'
-        download_path = f"{image_config.DIRECTORY}/{filename}"
+        download_path = os.path.join(image_config.DIRECTORY, filename)
         image_config.download_image(image_url, download_path)
 
 
