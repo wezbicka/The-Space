@@ -9,8 +9,9 @@ import image_config
 
 
 def send_photo(file_name, chat_id):
+    images = os.listdir(image_config.DIRECTORY)
     if file_name == '':
-        image = random.choice(image_config.DIRECTORY)
+        image = random.choice(images)
         with open(os.path.join(image_config.DIRECTORY, image), 'rb') as file:
             bot.send_document(
                 chat_id=chat_id,
