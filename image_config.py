@@ -14,8 +14,7 @@ def get_image_extension(image_url):
 
 
 def create_directory():
-    if not os.path.exists(DIRECTORY):
-        os.makedirs(DIRECTORY)
+    os.makedirs(DIRECTORY, exist_ok=True)
 
 
 def download_image(image_url, download_path):
