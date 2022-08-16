@@ -27,12 +27,12 @@
     * Фотографии Земли из космоса:
 
     ```
-        python get_epic_photos.py
+        python get_epic_photos.py -c 20
     ```
     * Фотографии дня с изображениями космоса с сайта NASA:
 
     ```
-        get_nasa_day_images.py
+        python get_nasa_day_images.py -c 15
     ```
 
     * Фотографии с запуска ракет SpaceX(параметром -id указываем ID запуска, а если он не указан, то скачиваются фотографии последнего запуска):
