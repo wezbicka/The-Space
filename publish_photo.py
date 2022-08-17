@@ -18,10 +18,11 @@ def send_photo(file_name, chat_id):
                 document=file
             )
     else:
-        bot.send_document(
-            chat_id=chat_id,
-            document=open(os.path.join(image_config.DIRECTORY, file_name), 'rb')
-        )
+        with open(os.path.join(image_config.DIRECTORY, file_name), 'rb') as file:
+            bot.send_document(
+                chat_id=chat_id,
+                document=file
+            )
 
 
 if __name__ == '__main__':
