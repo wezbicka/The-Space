@@ -153,3 +153,5 @@ cython_debug/
 .images/
 images/
 main.py
+.config/
+.upm
