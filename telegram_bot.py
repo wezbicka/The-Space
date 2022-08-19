@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import telegram
 
 from image_config import DIRECTORY
-
+from publish_photo import send_image
 
 def get_wait_time():
     parser = argparse.ArgumentParser(
@@ -24,13 +24,12 @@ def get_wait_time():
     return args.wait_time
 
 
-def send_photos(wait_time):
+def send_photos(wait_time, chat_id):
     images = os.listdir(DIRECTORY)
     while True:
         try:
             for image in images:
-                with open(os.path.join('images', image), 'rb') as file:
-                    bot.send_document(chat_id=chat_id, document=file)
+                send_image(image, chat_id)
                 sleep(wait_time)
             random.shuffle(images)
         except telegram.error.NetworkError:
@@ -43,4 +42,4 @@ if __name__ == "__main__":
     bot = telegram.Bot(token=tg_token)
     chat_id = os.environ["TG_CHAT_ID"]
     wait_time = get_wait_time()
-    send_photos(wait_time)
+    send_photos(wait_time, chat_id)
