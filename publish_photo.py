@@ -18,11 +18,8 @@ def send_image(image, chat_id):
 
 def select_photo(file_name):
     images = os.listdir(image_config.DIRECTORY)
-    if not file_name:
-        image = random.choice(images)
-        return image
-    else:
-        return file_name
+    image = random.choice(images) if not file_name else file_name    
+    return image
 
 
 if __name__ == '__main__':

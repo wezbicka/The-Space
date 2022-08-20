@@ -9,6 +9,7 @@ import telegram
 from image_config import DIRECTORY
 from publish_photo import send_image
 
+
 def get_wait_time():
     parser = argparse.ArgumentParser(
         description='Бесконечно отправляет все фотографии из папки с задержкой'
