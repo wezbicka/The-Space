@@ -17,12 +17,13 @@ def download_days_pictures(nasa_token, count):
     response.raise_for_status()
     images_response = response.json()
     for index, day_image in enumerate(images_response):
-        if day_image['media_type'] == 'image':
-            image_url = day_image["url"]
-            ext = image_config.get_image_extension(image_url)
-            filename = f'nasa_apod_{index}{ext}'
-            download_path = os.path.join(image_config.DIRECTORY, filename)
-            image_config.download_image(image_url, download_path)
+        if day_image['media_type'] != 'image':
+            continue
+        image_url = day_image["url"]
+        ext = image_config.get_image_extension(image_url)
+        filename = f'nasa_apod_{index}{ext}'
+        download_path = os.path.join(image_config.DIRECTORY, filename)
+        image_config.download_image(image_url, download_path)
 
 
 if __name__ == '__main__':
