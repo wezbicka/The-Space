@@ -10,10 +10,10 @@ import image_config
 
 def send_image(image, chat_id):
     with open(os.path.join(image_config.DIRECTORY, image), 'rb') as file:
-            bot.send_document(
-                chat_id=chat_id,
-                document=file
-            )
+        bot.send_document(
+            chat_id=chat_id,
+            document=file
+        )
 
 
 def select_photo(file_name):
